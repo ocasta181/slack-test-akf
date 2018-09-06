@@ -1,0 +1,24 @@
+{
+  "name": "slack-test-akf",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "slack-events-listener": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocasta181/slack-test-akf.git"
+  },
+  "author": "AKF",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ocasta181/slack-test-akf/issues"
+  },
+  "homepage": "https://github.com/ocasta181/slack-test-akf#readme"
+}
