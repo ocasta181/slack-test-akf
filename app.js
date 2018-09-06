@@ -1,25 +1,32 @@
-[user]                                                                                                                                                       
-# Please adapt and uncomment the following lines:                                                                                                            
-        name = ocasta181                                                                                                                                     
-        email = ocasta181@gmail.com                                                                                                                          
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-~                                                                                                                                                            
-"~/.gitconfig" 5L, 149C written                                                                                                                              
-ocastas-mbp:slack-test-akf ocasta$ git commit -m 'add server'                                                                                                
+// /* server.js */
+// 'use strict';
+
+// const express = require('express');
+// const reload = require('reload');
+// const slackEventListener = require('./slackEventListener');
+// const app = express();
+// const port = process.env.PORT || 4205;
+// const router = express.Router();
+
+// // start server
+// app.listen(port, function (req, res) {
+//     console.info(`Started Express server on port ${port}`)
+// });
+
+
+/*
+	Credit to joshuakarjala
+	https://gist.github.com/joshuakarjala/d700e2c9259d856a0785b8d9f8d74a5f
+*/
+var slackEvents = require('slack-events-listener')('v47IxLKpDJwmULUHq7MbNOI6', onSlackEvent);
+var bodyParser = require('body-parser');
+var app = require('express')();
+
+function onSlackEvent(event, cb) {
+  // do something. call cb with err if you want Slack to resend the message (your database might be down)
+  console.log(event);
+  // writeToDatabase(event, cb);
+}
+
+// /slack_events should match whatever webhook you set in Slack
+app.use('/slack_events', bodyParser.json(), slackEvents);
