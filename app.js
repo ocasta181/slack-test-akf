@@ -11,15 +11,15 @@ function onSlackEvent(event, cb) {
 	console.log(event);
 	console.log('event.event: ',event.event);
 	var event_type = event.event.type;
-	var username = event.event.user;
+	var username = event.event.message.user;
 	var channel = event.event.channel;
 	var timestamp = event.event.ts;
 	var channel_type = event.event.channel_type;
-	print('event_type: ',event_type);
-	print('username: ',username);
-	print('channel: ',channel);
-	print('timestamp: ',timestamp);
-	print('channel_type: ',channel_type);
+	console.log('event_type: ',event_type);
+	console.log('username: ',username);
+	console.log('channel: ',channel);
+	console.log('timestamp: ',timestamp);
+	console.log('channel_type: ',channel_type);
 	db.query('INSERT INTO message (event_type, username, channel, timestamp, channel_type) VALUES ($1, $2, $3, to_timestamp($4), $5) RETURNING id', 
 		[event_type, username, channel, timestamp, channel_type], 
 		(err, res) => {
