@@ -8,18 +8,11 @@ const db = require('./db.js');
 
 function onSlackEvent(event, cb) {
 	// do something. call cb with err if you want Slack to resend the message (your database might be down)
-	console.log(event);
-	console.log('event.event: ',event.event);
 	var event_type = event.event.type;
 	var username = event.event.message.user;
 	var channel = event.event.channel;
 	var timestamp = event.event.ts;
 	var channel_type = event.event.channel_type;
-	console.log('event_type: ',event_type);
-	console.log('username: ',username);
-	console.log('channel: ',channel);
-	console.log('timestamp: ',timestamp);
-	console.log('channel_type: ',channel_type);
 	db.query('INSERT INTO message (event_type, username, channel, timestamp, channel_type) VALUES ($1, $2, $3, to_timestamp($4), $5) RETURNING id', 
 		[event_type, username, channel, timestamp, channel_type], 
 		(err, res) => {
@@ -27,7 +20,6 @@ function onSlackEvent(event, cb) {
 				console.error('insert error: ', err.stack);
 			}
 			else if (res) {
-				console.log('hit insert res');
 				console.log(res);
 			}
 	});
