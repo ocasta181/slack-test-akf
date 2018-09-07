@@ -20,6 +20,7 @@ function onSlackEvent(event, cb) {
 				console.error('insert error: ', err.stack);
 			}
 			else if (res) {
+				res.sendStatus(200);
 				console.log(res);
 			}
 	});
