@@ -1,6 +1,6 @@
 const app = require('express')();
 const port = process.env.PORT || 4205;
-const slackEvents = require('./slack-events-listener')('v47IxLKpDJwmULUHq7MbNOI6', onSlackEvent);
+const slackEvents = require('slack-events-listener')('v47IxLKpDJwmULUHq7MbNOI6', onSlackEvent);
 const bodyParser = require('body-parser');
 // const db = require('./db.js');
 const db = require('./db.js');
