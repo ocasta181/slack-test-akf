@@ -2,12 +2,10 @@ const app = require('express')();
 const port = process.env.PORT || 4205;
 const slackEvents = require('slack-events-listener')('v47IxLKpDJwmULUHq7MbNOI6', onSlackEvent);
 const bodyParser = require('body-parser');
-// const db = require('./db.js');
 const db = require('./db.js');
 
 
 function onSlackEvent(event, cb) {
-	// do something. call cb with err if you want Slack to resend the message (your database might be down)
 	var event_type = event.event.type;
 	var username = event.event.message.user;
 	var channel = event.event.channel;
