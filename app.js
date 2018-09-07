@@ -1,6 +1,6 @@
 const app = require('express')();
 const port = process.env.PORT || 4205;
-const slackEvents = require('slack-events-listener')('v47IxLKpDJwmULUHq7MbNOI6', onSlackEvent);
+const slackEvents = require('./slack-events-listener')('v47IxLKpDJwmULUHq7MbNOI6', onSlackEvent);
 const bodyParser = require('body-parser');
 // const db = require('./db.js');
 const db = require('./db.js');
@@ -20,7 +20,6 @@ function onSlackEvent(event, cb) {
 				console.error('insert error: ', err.stack);
 			}
 			else if (res) {
-				res.sendStatus(200);
 				console.log(res);
 			}
 	});
