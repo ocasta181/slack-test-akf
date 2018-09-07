@@ -38,6 +38,7 @@ function onSlackEvent(event, cb) {
 				console.error('insert error: ', err.stack);
 			}
 			else if (res) {
+				console.log('hit insert res');
 				console.log(res);
 			}
 	});
