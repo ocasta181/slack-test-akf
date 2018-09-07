@@ -18,9 +18,11 @@ function onSlackEvent(event, cb) {
 		(err, res) => {
 			if (err) {
 				console.error('insert error: ', err.stack);
+				cb(err);
 			}
 			else if (res) {
 				console.log(res);
+				cb();
 			}
 	});
 }
