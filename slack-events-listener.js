@@ -20,7 +20,10 @@ module.exports = function (verificationToken, onSlackEvent) {
     if (body.type === 'url_verification') return res.end(body.challenge);
     if (body.type === 'event_callback') {
       onSlackEvent(body, function (err) {
-        if (!err) return res.sendStatus(200);
+        if (!err){
+          console.log('successful SlackEvent, returning 200');
+          return res.sendStatus(200);
+        } 
         res.statusCode = 400;
         res.end('please retry');
       });
