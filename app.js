@@ -14,7 +14,7 @@ function onSlackEvent(event, cb) {
 	var channel = event.event.channel;
 	var timestamp = event.event.ts;
 	var channel_type = event.event.channel_type;
-	db.query('INSERT INTO message (event_type, username, channel, timestamp, channel_type) VALUES ($1, $2, $3, $4, $5) RETURNING id', 
+	db.query('INSERT INTO message (event_type, username, channel, timestamp, channel_type) VALUES ($1, $2, $3, to_timestamp($4), $5) RETURNING id', 
 		[event_type, username, channel, timestamp, channel_type], 
 		(err, res) => {
 			if (err) {
